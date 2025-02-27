@@ -1,4 +1,4 @@
-package easemob_go
+package easemob_go_sdk
 
 import (
 	"context"
