@@ -51,9 +51,9 @@ func main() {
 ```
 
 # SDK功能清单
-- user 用户信息模块  https://github.com/xiaofengin/easemob-go/blob/main/user_test.go
-- push 推送信息模块  https://github.com/xiaofengin/easemob-go/blob/main/push_test.go
-- message 消息模块  https://github.com/xiaofengin/easemob-go/blob/main/message_test.go
-- contact 好友模块  https://github.com/xiaofengin/easemob-go/blob/main/contact_test.go
-- chatroom 聊天室模块  https://github.com/xiaofengin/easemob-go/blob/main/chatroom_test.go
-- chatgroup 群组模块  https://github.com/xiaofengin/easemob-go/blob/main/chatgroup_test.go
+- user 用户信息模块  https://github.com/Easemob-Community/easemob-go-sdk/blob/main/user_test.go
+- push 推送信息模块  https://github.com/Easemob-Community/easemob-go-sdk/blob/main/push_test.go
+- message 消息模块  https://github.com/Easemob-Community/easemob-go-sdk/blob/main/message_test.go
+- contact 好友模块  https://github.com/Easemob-Community/easemob-go-sdk/blob/main/contact_test.go
+- chatroom 聊天室模块  https://github.com/Easemob-Community/easemob-go-sdk/blob/main/chatroom_test.go
+- chatgroup 群组模块  https://github.com/Easemob-Community/easemob-go-sdk/blob/main/chatgroup_test.go
