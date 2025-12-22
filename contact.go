@@ -14,6 +14,10 @@ type RemarkResponse struct {
 	Timestamp int64  `json:"timestamp"`
 	Uri       string `json:"uri"`
 }
+type CheckContactResponse struct {
+	Username  string   `json:"username"`
+	CheckList []string `json:"check_list"`
+}
 
 // AddContact  添加好友
 // ownerID 当前用户的用户 ID。
@@ -22,6 +26,15 @@ func (c *Client) AddContact(ctx context.Context, ownerID, friendID string) (*Res
 	var resp ResultResponse
 	p := path.Join("users", url.PathEscape(ownerID), "contacts/users", url.PathEscape(friendID))
 	err := c.makeRequest(ctx, http.MethodPost, p, nil, nil, &resp)
+	return &resp, err
+}
+
+// CheckContact  校验好友
+// username 当前用户的用户 ID。
+// check_list 需要检查的好友的用户 ID，一次最多可校验 100 个用户 ID。
+func (c *Client) CheckContact(ctx context.Context, checkContact *CheckContactResponse) (*ResultResponse, error) {
+	var resp ResultResponse
+	err := c.makeRequest(ctx, http.MethodPost, "contacts/check", nil, checkContact, &resp)
 	return &resp, err
 }
 

@@ -21,7 +21,25 @@ func TestClient_AddContact(t *testing.T) {
 	}
 	fmt.Printf("数据的值：%v\n", ret.Entities)
 }
+func TestClient_CheckContact(t *testing.T) {
+	client, err := New(os.Getenv("appkey"),
+		os.Getenv("clientId"),
+		os.Getenv("clientSecret"),
+		"https://a1.easemob.com")
+	if err != nil {
+		return
+	}
+	p := CheckContactResponse{
+		Username:  "username1",
+		CheckList: []string{"username2", "username3"},
+	}
+	ret, err := client.CheckContact(context.Background(), &p)
+	if err != nil {
+		return
+	}
+	fmt.Printf("数据的值：%v\n", ret.Entities)
 
+}
 func TestClient_DeleteContact(t *testing.T) {
 	client, err := New(os.Getenv("appkey"),
 		os.Getenv("clientId"),
