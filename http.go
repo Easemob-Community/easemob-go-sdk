@@ -93,35 +93,34 @@ func (c *Client) newRequest(ctx context.Context, method, path string, params url
 		return nil, err
 	}
 
-	r, err := http.NewRequestWithContext(ctx, method, u, http.NoBody)
-	if err != nil {
-		return nil, err
-	}
+	var body io.Reader
 
 	switch t := data.(type) {
 	case nil:
-		r.Body = nil
-
+		body = nil
 	case io.ReadCloser:
-		r.Body = t
-
+		body = t
 	case io.Reader:
-		r.Body = io.NopCloser(t)
-
+		body = t
 	default:
 		b, err := json.Marshal(data)
 		if err != nil {
 			return nil, err
 		}
-		r.Body = io.NopCloser(bytes.NewReader(b))
+		body = bytes.NewReader(b)
+	}
+	r, err := http.NewRequestWithContext(ctx, method, u, body)
+	if err != nil {
+		return nil, err
 	}
 
 	return r, nil
 }
-
 func (c *Client) makeRequest(ctx context.Context, method, path string, params url.Values, data, result interface{}) error {
-	r, _ := c.newRequest(ctx, method, path, params, data)
-
+	r, err := c.newRequest(ctx, method, path, params, data)
+	if err != nil {
+		return err
+	}
 	r.Header.Set("Content-Type", "application/json")
 	r.Header.Set("Authorization", "Bearer "+c.appToken)
 	r.Header.Set("User-Agent", "go-sdk")
