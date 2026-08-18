@@ -9,6 +9,7 @@ import (
 )
 
 type CreateRoomParam struct {
+	RoomId      string   `json:"roomid,omitempty"`   //聊天室id，参数最多可传入 64 个字符，只支持小写英文字母 a-z 和数字 0-9。注意不要使用大写英文字母 A-Z
 	Name        string   `json:"name"`               //聊天室名称，最大长度为 128 个字符。
 	Description string   `json:"description"`        //聊天室描述，最大长度为 512 字符。
 	MaxUsers    int      `json:"maxusers,omitempty"` //聊天室最大成员数（包括聊天室所有者）。取值范围为 [1,10,000]，默认值为 1000。如需调整请联系商务。

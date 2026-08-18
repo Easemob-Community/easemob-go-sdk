@@ -14,7 +14,9 @@ import (
 )
 
 type CreateGroupParam struct {
+	GroupId           string   `json:"groupid,omitempty"`             //群组id，参数最多可传入 64 个字符，只支持小写英文字母 a-z 和数字 0-9。注意不要使用大写英文字母 A-Z
 	GroupName         string   `json:"groupname,omitempty"`           //群组名称，最大长度为 128 字符。
+	Avatar            string   `json:"avatar,omitempty"`              //群组头像，最大长度为 1024 字符。
 	Description       string   `json:"description,omitempty"`         //群组描述，最大长度为 512 字符。
 	Public            bool     `json:"public"`                        //是否是公开群。公开群可以被搜索到，用户可以申请加入公开群；私有群无法被搜索到，因此需要群主或群管理员添加，用户才可以加入。
 	Scale             string   `json:"scale,omitempty"`               //群组规模，取决于群成员总数 maxusers 参数。（默认）normal：普通群，即群成员总数不超过 3000。large：大型群，群成员总数超过 3000。
