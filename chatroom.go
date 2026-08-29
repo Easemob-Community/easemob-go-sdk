@@ -16,6 +16,7 @@ type CreateRoomParam struct {
 	Owner       string   `json:"owner"`              //聊天室所有者。
 	Members     []string `json:"members,omitempty"`  //聊天室普通成员和管理员的用户 ID 数组，不包含聊天室所有者的用户 ID。该数组可包含的元素数量不超过 maxusers 的值。若传该参数，确保至少设置一个数组元素。
 	Custom      string   `json:"custom,omitempty"`   //聊天室扩展信息，例如可以给聊天室添加业务相关的标记，不要超过 1,024 个字符。
+	RoomId      string   `json:"roomid,omitempty"`   //使用该功能前，你需联系环信商务。roomid 参数最多可传入 64 个字符，只支持小写英文字母 a-z 和数字 0-9。注意不要使用大写英文字母 A-Z 。
 }
 type UpdateRoomParam struct {
 	Name        string `json:"name"`               //聊天室名称，最大长度为 128 个字符。
