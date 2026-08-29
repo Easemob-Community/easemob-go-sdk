@@ -26,6 +26,7 @@ type CreateGroupParam struct {
 	Owner             string   `json:"owner"`                         //群主的用户 ID。
 	Members           []string `json:"members,omitempty"`             //群成员的用户 ID 数组，不包含群主的用户 ID。该数组可包含的元素数量不超过 maxusers 的值。
 	Custom            string   `json:"custom,omitempty"`              //群主的用户 ID。
+	GroupId           string   `json:"groupid,omitempty"`             //使用该功能前，你需联系环信商务。groupid 参数最多可传入 64 个字符，只支持小写英文字母 a-z 和数字 0-9。注意不要使用大写英文字母 A-Z 。
 }
 type UpdateGroupParam struct {
 	GroupName         string `json:"groupname,omitempty"`           //群组名称，最大长度为 128 字符。
